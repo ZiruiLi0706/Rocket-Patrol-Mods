@@ -5,8 +5,7 @@ class Play extends Phaser.Scene {
 
     preload(){
         this.load.image('background', 'assets/background.jpeg');
-        this.load.image('xi', 'assets/xi.png');
-        this.load.image('fire', 'assets/fire.png');
+       
         // load spritesheet
     this.load.spritesheet('explosion', './assets/explosion.png', 
     {frameWidth: 64, frameHeight: 32, 
