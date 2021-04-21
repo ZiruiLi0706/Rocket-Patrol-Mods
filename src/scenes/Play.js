@@ -16,7 +16,7 @@ class Play extends Phaser.Scene {
     create(){
         
         this.background = this.add.tileSprite(
-            0,0,640,480, 'background'
+            0,0,800,600, 'background'
         ).setOrigin(0,0);
 
         this.p1Dusk = new Dusk(this, game.config.width/2,
