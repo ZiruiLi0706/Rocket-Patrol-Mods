@@ -19,7 +19,7 @@ class Play extends Phaser.Scene {
             0,0,640,480, 'background'
         ).setOrigin(0,0);
 
-        this.p1Dusk = new Rocket(this, game.config.width/2,
+        this.p1Dusk = new Dusk(this, game.config.width/2,
             game.config.height - borderUISize - borderPadding,
             'xi');
 
@@ -103,7 +103,7 @@ class Play extends Phaser.Scene {
         this.scene.restart();
         }
         
-        this.starfield.tilePositionX -= 4;
+        this.background.tilePositionX -= 4;
 
         //this.checkCollision(this.p1Rocket, this.ship1);
         //this.checkCollision(this.p1Rocket, this.ship2);
@@ -112,15 +112,15 @@ class Play extends Phaser.Scene {
      // check collisions
         if(this.checkCollision(this.p1Dusk, this.enemy3)) {
         this.p1Dusk.reset();
-        this.shipExplode(this.ship3);   
+        this.enemyExplode(this.enemy3);   
     }
         if (this.checkCollision(this.p1Dusk, this.enemy2)) {
         this.p1Dusk.reset();
-        this.shipExplode(this.ship2);
+        this.enemyExplode(this.enemy2);
   }
         if (this.checkCollision(this.p1Dusk, this.enemy1)) {
         this.p1Dusk.reset();
-        this.shipExplode(this.ship1);
+        this.enemyExplode(this.enemy1);
   }
 
         if (!this.gameOver) {               
