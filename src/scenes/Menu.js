@@ -40,7 +40,7 @@ class Menu extends Phaser.Scene{
           // Novice mode
           game.settings = {
             enemySpeed: 3,
-            gameTimer: 60000    
+            gameTimer: 2000    
           }
           this.sound.play('sfx_select');
           this.scene.start("playScene");    
@@ -49,7 +49,7 @@ class Menu extends Phaser.Scene{
           // Expert mode
           game.settings = {
             enemySpeed: 7,
-            gameTimer: 45000    
+            gameTimer: 1000    
           }
           this.sound.play('sfx_select');
           this.scene.start("playScene");    

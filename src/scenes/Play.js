@@ -18,7 +18,8 @@ class Play extends Phaser.Scene {
 
     create(){
         
-        this.sound.play('backgroundmusic');
+        this.bgm = this.sound.add('backgroundmusic');
+        this.bgm.play();
         //sound.setLoop(loop);
 
         this.background = this.add.tileSprite(
@@ -114,6 +115,7 @@ class Play extends Phaser.Scene {
          // check key input for restart
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
         this.scene.restart();
+        this.bgm.stop();
 
         }
         
@@ -124,20 +126,20 @@ class Play extends Phaser.Scene {
         //this.checkCollision(this.p1Rocket, this.ship3);
 
      // check collisions
-        if(this.checkCollision(this.p1Dusk, this.enemy3)) {
-        this.p1Dusk.reset();
+        if(this.checkCollision(this.ink, this.enemy3)) {
+        this.ink.reset();
         this.enemyExplode(this.enemy3);   
     }
-        if (this.checkCollision(this.p1Dusk, this.enemy2)) {
-        this.p1Dusk.reset();
+        if (this.checkCollision(this.ink, this.enemy2)) {
+        this.ink.reset();
         this.enemyExplode(this.enemy2);
   }
-        if (this.checkCollision(this.p1Dusk, this.enemy1)) {
-        this.p1Dusk.reset();
+        if (this.checkCollision(this.ink, this.enemy1)) {
+        this.ink.reset();
         this.enemyExplode(this.enemy1);
 
-        if (this.checkCollision(this.p1Dusk, this.enemy4)) 
-            this.p1Dusk.reset();
+        if (this.checkCollision(this.ink, this.enemy4)) 
+            this.ink.reset();
             this.enemyExplode(this.enemy4);
   }
 
@@ -148,6 +150,7 @@ class Play extends Phaser.Scene {
         this.enemy3.update();
         this.enemy4.update();
         this.sound.update();
+        this.ink.update();
 }  
 
     }

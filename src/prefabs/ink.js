@@ -1,14 +1,19 @@
 class Ink extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, texture, frame){
+    constructor(scene, x, y, texture, frame, dusk){
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
         this.movementSpeed = 4;
         this.isFiring = false;
+        this.dusk = dusk;
         
     }
 update(){
 
-
+    if (Phaser.Input.Keyboard.JustDown(keyF) && !this.isFiring) {
+        this.isFiring = true;
+        //this.sfxDusk.play(); 
+        this.alpha=1;
+        }
     if(this.isFiring) {
         this.y -= this.movementSpeed;
         if(this.y <borderUISize*3){
@@ -25,16 +30,8 @@ update(){
             this.x += this.movementSpeed;
         }
         
-        if(Phaser.Input.Keyboard.JustDown(keyF)){
-            this.isFiring = true;
-        } 
-
         // fire button
-        if (Phaser.Input.Keyboard.JustDown(keyF) && !this.isFiring) {
-        this.isFiring = true;
-        this.sfxDusk.play(); 
-        this.alpha=1;
-        }
+       
 
         this.x = Phaser.Math.Clamp(
             this.x, borderUISize + borderPadding, 
