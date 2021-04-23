@@ -34,7 +34,6 @@ class Play extends Phaser.Scene {
                 game.config.height - borderUISize - borderPadding-30,
                 'ink');
 
-            // add spaceships (x3)
         this.enemy1 = new Enemy(this, game.config.width + borderUISize*3, 
             borderUISize*4, 'fire', 0, 20).setOrigin(0, 0);
 
@@ -137,11 +136,12 @@ class Play extends Phaser.Scene {
         if (this.checkCollision(this.ink, this.enemy1)) {
         this.ink.reset();
         this.enemyExplode(this.enemy1);
-
-        if (this.checkCollision(this.ink, this.enemy4)) 
-            this.ink.reset();
-            this.enemyExplode(this.enemy4);
+    }
+        if (this.checkCollision(this.ink, this.enemy4)) {
+        this.ink.reset();
+        this.enemyExplode(this.enemy4);
   }
+
 
         if (!this.gameOver) {               
         this.p1Dusk.update();         // update rocket sprite
