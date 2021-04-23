@@ -29,7 +29,7 @@ class Play extends Phaser.Scene {
             game.config.height - borderUISize - borderPadding-30,
             'xi');
 
-            this.ink = new Ink(this, game.config.width/2+30,
+        this.ink = new Ink(this, game.config.width/2+30,
                 game.config.height - borderUISize - borderPadding-30,
                 'ink');
 
