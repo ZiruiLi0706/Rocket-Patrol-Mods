@@ -7,7 +7,8 @@ class Play extends Phaser.Scene {
         this.load.image('background', 'assets/background.jpeg');
         this.load.image('xi', 'assets/xi.png');
         this.load.image('fire', 'assets/fire.png');
-        this.load.image('fish', 'assets/fish_1_20.png')
+        this.load.image('fish', 'assets/fish2_55.png')
+        this.load.image('ink', 'assets/ink.png')
         // load spritesheet
     this.load.spritesheet('explosion', './assets/explosion.png', 
     {frameWidth: 64, frameHeight: 32, 
@@ -25,21 +26,25 @@ class Play extends Phaser.Scene {
         ).setOrigin(0,0);
 
         this.p1Dusk = new Dusk(this, game.config.width/2,
-            game.config.height - borderUISize - borderPadding-50,
+            game.config.height - borderUISize - borderPadding-30,
             'xi');
 
+            this.ink = new Ink(this, game.config.width/2+30,
+                game.config.height - borderUISize - borderPadding-30,
+                'ink');
+
             // add spaceships (x3)
-        this.enemy1 = new Enemy(this, game.config.width + borderUISize*6, 
-            borderUISize*4, 'fire', 0, 30).setOrigin(0, 0);
+        this.enemy1 = new Enemy(this, game.config.width + borderUISize*3, 
+            borderUISize*4, 'fire', 0, 20).setOrigin(0, 0);
 
         this.enemy2 = new Enemy(this, game.config.width + borderUISize*3, 
-            borderUISize*5 + borderPadding*2, 'fire', 0, 20).setOrigin(0,0);
+            borderUISize*7 + borderPadding*2, 'fire', 0, 20).setOrigin(0,0);
 
         this.enemy3 = new Enemy(this, game.config.width, 
-            borderUISize*6 + borderPadding*4, 'fire', 0, 10).setOrigin(0,0);
+            borderUISize*7 + borderPadding*4, 'fire', 0, 10).setOrigin(0,0);
 
         this.enemy4 = new Enemy(this, game.config.width + borderUISize*7, 
-            borderUISize*3, 'fire', 0, 40).setOrigin(0, 0);
+            borderUISize*1 + borderPadding*8, 'fish', 0, 40).setOrigin(0, 0);
 
         //green UI background
         this.add.rectangle(
@@ -109,6 +114,7 @@ class Play extends Phaser.Scene {
          // check key input for restart
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
         this.scene.restart();
+
         }
         
         this.background.tilePositionX -= 4;

@@ -2,7 +2,7 @@ class Dusk extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, texture, frame){
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
-        this.movementSpeed = 4;
+        
         this.isFiring = false;
         
         this.sfxDusk = scene.sound.add('sfx_dusk'); 
@@ -11,9 +11,9 @@ class Dusk extends Phaser.GameObjects.Sprite {
     update(){
         
         if(this.isFiring) {
-            this.y -= this.movementSpeed;
+            
             if(this.y <borderUISize*3){
-                this.y = game.config.height-borderUISize-borderPadding;
+                this.y = game.config.height-borderUISize-borderPadding - 30;
                 this.isFiring = false;
             }
         } else {
@@ -43,7 +43,7 @@ class Dusk extends Phaser.GameObjects.Sprite {
        
     }
     reset(){
-        this.y = game.config.height-borderUISize-borderPadding;
+        this.y = game.config.height-borderUISize-borderPadding - 30;
         this.isFiring = false;
     }
 }
