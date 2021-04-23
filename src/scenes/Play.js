@@ -11,16 +11,19 @@ class Play extends Phaser.Scene {
     this.load.spritesheet('explosion', './assets/explosion.png', 
     {frameWidth: 64, frameHeight: 32, 
         startFrame: 0, endFrame: 9});
+        this.load.audio('backgroundmusic', 'assets/bgm.wav');
     }
 
     create(){
         
+        this.sound.play('backgroundmusic');
+
         this.background = this.add.tileSprite(
             0,0,800,600, 'background'
         ).setOrigin(0,0);
 
         this.p1Dusk = new Dusk(this, game.config.width/2,
-            game.config.height - borderUISize - borderPadding,
+            game.config.height - borderUISize - borderPadding-50,
             'xi');
 
             // add spaceships (x3)
@@ -36,18 +39,18 @@ class Play extends Phaser.Scene {
         //green UI background
         this.add.rectangle(
             0, borderUISize + borderPadding, 
-            game.config.width, borderUISize*2, 0x00FF00,
+            game.config.width, borderUISize*2, 0xFFFFFF,
             ).setOrigin(0,0);
             // white borders
-	this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0 ,0);
+	this.add.rectangle(0, 0, game.config.width, borderUISize, 0x000000).setOrigin(0 ,0);
 	
     this.add.rectangle(0, game.config.height - borderUISize, 
-        game.config.width, borderUISize, 0xFFFFFF).setOrigin(0 ,0);
+        game.config.width, borderUISize, 0x000000).setOrigin(0 ,0);
 	
-        this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0 ,0);
+        this.add.rectangle(0, 0, borderUISize, game.config.height, 0x000000).setOrigin(0 ,0);
 	
     this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, 
-        game.config.height, 0xFFFFFF).setOrigin(0 ,0);
+        game.config.height, 0x000000).setOrigin(0 ,0);
     
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
@@ -128,6 +131,7 @@ class Play extends Phaser.Scene {
         this.enemy1.update();           // update spaceships (x3)
         this.enemy2.update();
         this.enemy3.update();
+        this.sound.update();
 }  
 
     }
