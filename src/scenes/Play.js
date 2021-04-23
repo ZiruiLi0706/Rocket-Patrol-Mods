@@ -17,6 +17,7 @@ class Play extends Phaser.Scene {
     create(){
         
         this.sound.play('backgroundmusic');
+        //sound.setLoop(loop);
 
         this.background = this.add.tileSprite(
             0,0,800,600, 'background'
