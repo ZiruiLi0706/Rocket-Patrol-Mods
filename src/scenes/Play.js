@@ -7,6 +7,7 @@ class Play extends Phaser.Scene {
         this.load.image('background', 'assets/background.jpeg');
         this.load.image('xi', 'assets/xi.png');
         this.load.image('fire', 'assets/fire.png');
+        this.load.image('fish', 'assets/fish_1_20.png')
         // load spritesheet
     this.load.spritesheet('explosion', './assets/explosion.png', 
     {frameWidth: 64, frameHeight: 32, 
@@ -36,6 +37,9 @@ class Play extends Phaser.Scene {
 
         this.enemy3 = new Enemy(this, game.config.width, 
             borderUISize*6 + borderPadding*4, 'fire', 0, 10).setOrigin(0,0);
+
+        this.enemy4 = new Enemy(this, game.config.width + borderUISize*7, 
+            borderUISize*3, 'fire', 0, 40).setOrigin(0, 0);
 
         //green UI background
         this.add.rectangle(
@@ -70,7 +74,7 @@ class Play extends Phaser.Scene {
 
     // display score
     let scoreConfig = {
-    fontFamily: 'Courier',
+    fontFamily: 'Apple Chancery',
     fontSize: '28px',
     backgroundColor: '#F3B141',
     color: '#843605',
@@ -125,6 +129,10 @@ class Play extends Phaser.Scene {
         if (this.checkCollision(this.p1Dusk, this.enemy1)) {
         this.p1Dusk.reset();
         this.enemyExplode(this.enemy1);
+
+        if (this.checkCollision(this.p1Dusk, this.enemy4)) 
+            this.p1Dusk.reset();
+            this.enemyExplode(this.enemy4);
   }
 
         if (!this.gameOver) {               
@@ -132,6 +140,7 @@ class Play extends Phaser.Scene {
         this.enemy1.update();           // update spaceships (x3)
         this.enemy2.update();
         this.enemy3.update();
+        this.enemy4.update();
         this.sound.update();
 }  
 
